@@ -1,0 +1,66 @@
+"""
+Module: name_drawer
+
+A program to draw a name using one (or more) turtles.
+
+Authors:
+1) Your Name - Your USD Email Address
+"""
+
+import turtle
+
+# Ask the user for customization inputs
+pen_color = input("Enter the color to use for the pen (e.g., 'blue', 'red'): ")
+bg_color = input("Enter the background color (e.g., 'white', 'yellow'): ")
+size = int(input("Enter the size scale (e.g., 1 for small, 2 for large): "))
+
+# Set up the screen
+screen = turtle.Screen()
+screen.bgcolor(bg_color)
+
+# Create a turtle for drawing
+t = turtle.Turtle()
+t.speed(3)
+t.pensize(3)
+t.color(pen_color)
+
+# Function to move turtle without drawing
+def move_to(x, y):
+    t.penup()
+    t.goto(x, y)
+    t.pendown()
+
+# Function to draw letter 'A'
+def draw_A(x, y):
+    move_to(x, y)
+    t.left(60)
+    t.forward(50 * size)
+    t.right(120)
+    t.forward(50 * size)
+    t.backward(25 * size)
+    t.right(120)
+    t.forward(25 * size)
+
+# Function to draw letter 'B'
+def draw_B(x, y):
+    move_to(x, y)
+    t.left(90)
+    t.forward(50 * size)
+    t.right(90)
+    for _ in range(2):
+        t.circle(-12 * size, 180)
+        move_to(x, y + 25 * size)
+
+# Function to draw letter 'C'
+def draw_C(x, y):
+    move_to(x, y)
+    t.circle(25 * size, -180)
+
+# Start drawing name
+draw_A(-150, 0)  # Adjust positions as needed
+draw_B(-90, 0)
+draw_C(-30, 0)
+
+# Hide turtle and finish
+t.hideturtle()
+turtle.done()
